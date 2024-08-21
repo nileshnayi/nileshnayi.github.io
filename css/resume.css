@@ -87,8 +87,8 @@ h2 {
 
 section.resume-section {
   border-bottom: 1px solid #dee2e6;
-  padding-top: 5rem !important;
-  padding-bottom: 5rem !important; }
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important; }
   section.resume-section .resume-item .resume-date {
     min-width: none; }
 
@@ -113,3 +113,10 @@ a {
   color: #BD5D38; }
   a:hover, a:focus, a:active {
     color: #824027; }
+    @media screen and (max-width: 480px) and (min-width: 320px) {
+
+      .img-res img.img-profile{
+        width: 140px;
+      }
+
+  }
