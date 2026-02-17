@@ -10,9 +10,7 @@
 
 <style>
 
-html{
-    scroll-behavior:smooth;
-}
+html { scroll-behavior:smooth; }
 
 *{
     margin:0;
@@ -31,53 +29,77 @@ body{
 
 nav{
     position:fixed;
-    top:0;
     width:100%;
+    top:0;
     background:#0a3d91;
     padding:15px 0;
     z-index:1000;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
 }
 
 .nav-container{
     max-width:1200px;
     margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
     padding:0 20px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
 }
 
-.logo{
-    color:#fff;
-    font-weight:600;
-    font-size:18px;
+.nav-links{
+    display:flex;
+    gap:30px;
 }
 
 .nav-links a{
     color:#fff;
     text-decoration:none;
-    margin-left:25px;
     font-size:14px;
-    transition:0.3s;
+    font-weight:500;
 }
 
-.nav-links a:hover{
-    opacity:0.8;
+.menu-toggle{
+    display:none;
+    font-size:22px;
+    color:#fff;
+    cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+@media(max-width:768px){
+
+    .nav-links{
+        position:absolute;
+        top:60px;
+        right:0;
+        background:#0a3d91;
+        flex-direction:column;
+        width:100%;
+        text-align:center;
+        display:none;
+        padding:20px 0;
+    }
+
+    .nav-links a{
+        padding:10px 0;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
 }
 
 /* HEADER */
 
 header{
+    padding:140px 20px 90px;
     background:#0a3d91;
     color:#fff;
-    padding:140px 20px 80px;
 }
 
 .container{
     max-width:1200px;
     margin:auto;
-    padding:0 20px;
 }
 
 .hero{
@@ -85,7 +107,7 @@ header{
     align-items:center;
     justify-content:space-between;
     flex-wrap:wrap;
-    gap:40px;
+    gap:50px;
 }
 
 .hero-text{
@@ -100,8 +122,8 @@ header{
 
 .hero-text h2{
     font-size:20px;
-    font-weight:400;
     margin:10px 0 20px;
+    font-weight:400;
 }
 
 .hero-text p{
@@ -111,26 +133,22 @@ header{
 
 .buttons{
     display:flex;
-    flex-wrap:wrap;
     gap:15px;
+    flex-wrap:wrap;
 }
 
 .btn{
     padding:12px 22px;
-    border-radius:5px;
+    border-radius:6px;
     text-decoration:none;
-    font-size:14px;
     font-weight:600;
+    font-size:14px;
     transition:0.3s;
 }
 
 .btn-primary{
     background:#fff;
     color:#0a3d91;
-}
-
-.btn-primary:hover{
-    background:#e6ecff;
 }
 
 .btn-outline{
@@ -145,7 +163,6 @@ header{
 
 .hero-img{
     flex:1;
-    min-width:250px;
     text-align:center;
 }
 
@@ -159,20 +176,22 @@ header{
 /* SECTIONS */
 
 section{
-    padding:80px 0;
+    padding:80px 20px;
 }
 
 .section-title{
     text-align:center;
     font-size:28px;
-    margin-bottom:40px;
     color:#0a3d91;
+    margin-bottom:40px;
 }
 
 .cards{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
+    max-width:1100px;
+    margin:auto;
 }
 
 .card{
@@ -188,6 +207,8 @@ section{
 }
 
 .timeline{
+    max-width:900px;
+    margin:auto;
     border-left:3px solid #0a3d91;
     padding-left:20px;
 }
@@ -207,7 +228,6 @@ footer{
     color:#fff;
     text-align:center;
     padding:20px;
-    font-size:14px;
 }
 
 /* FLOATING BUTTONS */
@@ -217,16 +237,15 @@ footer{
     bottom:20px;
     right:20px;
     background:#25D366;
-    color:#fff;
     width:55px;
     height:55px;
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:50%;
+    color:#fff;
     font-size:24px;
     text-decoration:none;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 .back-to-top{
@@ -234,28 +253,27 @@ footer{
     bottom:90px;
     right:20px;
     background:#0a3d91;
-    color:#fff;
     width:45px;
     height:45px;
+    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:50%;
-    font-size:18px;
+    color:#fff;
     text-decoration:none;
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* RESPONSIVE */
+/* MOBILE HERO FIX */
 
 @media(max-width:768px){
+
     .hero{
         flex-direction:column;
         text-align:center;
     }
 
-    .nav-links{
-        display:none;
+    .buttons{
+        justify-content:center;
     }
 
     .hero-text h1{
@@ -267,20 +285,18 @@ footer{
 </head>
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 <div class="nav-container">
-    <div class="logo">Nilesh Nayi</div>
-    <div class="nav-links">
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links" id="navLinks">
         <a href="#expertise">Core Expertise</a>
         <a href="#experience">Professional Experience</a>
         <a href="#contact">Contact Information</a>
     </div>
 </div>
 </nav>
-
-<!-- HEADER -->
 
 <header id="top">
 <div class="container hero">
@@ -290,13 +306,12 @@ footer{
         <p>19+ years of experience in Software QA, Automation, DevOps & Process Excellence.</p>
 
         <div class="buttons">
-            <!-- Resume opens in new tab -->
             <a href="assets/Nilesh_Nayi_Resume.pdf" target="_blank" class="btn btn-primary">
-                <i class="fa fa-file"></i> View Resume
+                View Resume
             </a>
 
             <a href="https://www.linkedin.com/in/nilesh-nayi-7987b231/" target="_blank" class="btn btn-outline">
-                <i class="fab fa-linkedin"></i> View LinkedIn
+                View LinkedIn
             </a>
         </div>
     </div>
@@ -307,10 +322,7 @@ footer{
 </div>
 </header>
 
-<!-- CORE EXPERTISE -->
-
 <section id="expertise">
-<div class="container">
 <h3 class="section-title">Core Expertise</h3>
 <div class="cards">
     <div class="card">Test Automation Frameworks</div>
@@ -320,53 +332,38 @@ footer{
     <div class="card">Agile / Scrum Leadership</div>
     <div class="card">QA Strategy & Team Building</div>
 </div>
-</div>
 </section>
-
-<!-- EXPERIENCE -->
 
 <section id="experience" style="background:#eef3ff;">
-<div class="container">
 <h3 class="section-title">Professional Experience</h3>
 <div class="timeline">
-
-<div class="timeline-item">
-    <h4>Sr. QA Manager | Scanpoint Geomatics Ltd (2019 - Present)</h4>
-    <p>Leading QA team, automation strategy, governance & compliance.</p>
-</div>
-
-<div class="timeline-item">
-    <h4>Sr. Software Test Engineer | KiwiQA Services (2015 - 2018)</h4>
-    <p>International automation, API, performance & security testing.</p>
-</div>
-
-<div class="timeline-item">
-    <h4>Sr. Software Engineer | Scanpoint Geomatics (2007 - 2015)</h4>
-    <p>Enterprise GIS & Smart City solution development leadership.</p>
-</div>
-
-</div>
+    <div class="timeline-item">
+        <h4>Sr. QA Manager | 2019 - Present</h4>
+        <p>Leading QA strategy, automation, governance and compliance.</p>
+    </div>
+    <div class="timeline-item">
+        <h4>Sr. Software Test Engineer | 2015 - 2018</h4>
+        <p>International automation & performance testing.</p>
+    </div>
+    <div class="timeline-item">
+        <h4>Sr. Software Engineer | 2007 - 2015</h4>
+        <p>Enterprise GIS & Smart City solutions.</p>
+    </div>
 </div>
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
-<div class="container">
 <h3 class="section-title">Contact Information</h3>
 <div class="cards">
     <div class="card"><strong>Phone:</strong> +91 9998356092</div>
     <div class="card"><strong>Email:</strong> nileshnayi@gmail.com</div>
     <div class="card"><strong>Location:</strong> Ahmedabad, India</div>
 </div>
-</div>
 </section>
 
 <footer>
 © 2026 Nilesh Nayi | Senior QA Manager
 </footer>
-
-<!-- FLOATING BUTTONS -->
 
 <a href="https://wa.me/919998356092" target="_blank" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
@@ -375,6 +372,17 @@ footer{
 <a href="#top" class="back-to-top">
 <i class="fa fa-arrow-up"></i>
 </a>
+
+<script>
+function toggleMenu(){
+    var nav = document.getElementById("navLinks");
+    if(nav.style.display === "flex"){
+        nav.style.display = "none";
+    } else {
+        nav.style.display = "flex";
+    }
+}
+</script>
 
 </body>
 </html>
